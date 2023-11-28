@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tellern</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+</head>
+
+<body>
+    <div class="rep-wrapper">
+        <h1>Hva trener du?</h1>
+        <form>
+
+            <div class="select-wrapper">
+                <div class="radio-wrapper" onclick="selectExerciseType('Biceps')">
+                    <img class="logo" src="assets/ikon-biceps.png">
+                    <input type="radio" id="biceps" name="exercise-type" value="Biceps" onchange="updateExerciseNames()"
+                        checked>
+                    <label for="biceps">Biceps</label>
+                </div>
+                <div class="radio-wrapper" onclick="selectExerciseType('MageSkuldre')">
+                    <img class="logo" src="assets/ikon-handvekt.png">
+                    <input type="radio" id="mageSkuldre" name="exercise-type" value="MageSkuldre"
+                        onchange="updateExerciseNames()">
+                    <label for="mageSkuldre">Mage og skuldre</label>
+                </div>
+                <div class="radio-wrapper" onclick="selectExerciseType('BrystTriceps')">
+                    <img class="logo" src="assets/ikon-bryst.png">
+                    <input type="radio" id="brystTriceps" name="exercise-type" value="BrystTriceps"
+                        onchange="updateExerciseNames()">
+                    <label for="brystTriceps">Bryst og triceps</label>
+                </div>
+                <div class="radio-wrapper" onclick="selectExerciseType('SquatsRygg')">
+                    <img class="logo" src="assets/ikon-leg.png">
+                    <input type="radio" id="squatsRygg" name="exercise-type" value="SquatsRygg"
+                        onchange="updateExerciseNames()">
+                    <label for="squatsRygg">Squats og Rygg</label>
+                </div>
+            </div>
+    </div>
+    <h1>Øvelse</h1>
+    <div class="select-wrapper">
+        <select id="exercise-name" name="exercise-name">
+        </select>
+    </div>
+
+    <h1>Repetisjoner</h1>
+    <div class="select-wrapper">
+        <input type="number" id="repetitions" name="repetitions" placeholder="10">
+        <div class="preset-wrapper">
+            <span>Foreslått</span>
+            <button type="button" class="preset-button" onclick="setRepetitions(6)">6</button>
+            <button type="button" class="preset-button" onclick="setRepetitions(8)">8</button>
+            <button type="button" class="preset-button" onclick="setRepetitions(10)">10</button>
+            <button type="button" class="preset-button" onclick="setRepetitions(12)">12</button>
+            <button type="button" class="preset-button" onclick="setRepetitions(15)">15</button>
+        </div>
+    </div>
+    <h1>Vekt</h1>
+    <div class="input-group">
+        <select id="weight" name="weight">
+            <option value="2.5">2.5 kg</option>
+            <option value="3.5">3.5 kg</option>
+            <option value="4.5">4.5 kg</option>
+            <option value="5.5">5.5 kg</option>
+            <option value="6.5">6.5 kg</option>
+            <option value="8">8 kg</option>
+            <option value="9">9 kg</option>
+            <option value="10">10 kg</option>
+            <option value="11.5">11.5 kg</option>
+            <option value="13.5">13.5 kg</option>
+            <option value="16">16 kg</option>
+            <option value="18">18 kg</option>
+            <option value="20.5">20.5 kg</option>
+            <option value="22.5">22.5 kg</option>
+            <option value="24">24 kg</option>
+        </select>
+    </div>
+    <button type="button" onclick="countRepetitions()">Legg til</button>
+
+    <p id="result"></p>
+
+    <table id="count-table">
+        <tr>
+            <th>Øvelse</th>
+            <th>Repetisjoner</th>
+            <th>Vekt</th>
+        </tr>
+    </table>
+    <button type="button" class="cta-button" onclick="clearCounts()">
+        Clear</button>
+    <button type="button" class="cta-button"
+        onclick="saveCounts(); alert('Your repetitions have been saved')">Save</button>
+    </form>
+    <script src="script.js"></script> <!-- Link to your external script.js file -->
+</body>
+
+</html>
