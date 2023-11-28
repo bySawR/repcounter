@@ -51,24 +51,24 @@ for (const radio of exerciseTypeRadios) {
 updateExerciseNames();
 
 var countTable = document.getElementById("count-table");
+
 for (var i = 0; i < previousCounts.length; i++) {
     var row = countTable.insertRow(1);
-    var exerciseTypeCell = row.insertCell(0);
-    var exerciseNameCell = row.insertCell(1);
-    var repetitionsCell = row.insertCell(2);
-    var weightCell = row.insertCell(3);
-    exerciseTypeCell.innerHTML = previousCounts[i].exerciseType;
+    var exerciseNameCell = row.insertCell(0);
+    var repetitionsCell = row.insertCell(1);
+    var weightCell = row.insertCell(2);
+
+    // Insert the data into the cells
     exerciseNameCell.innerHTML = previousCounts[i].exerciseName;
     repetitionsCell.innerHTML = previousCounts[i].repetitions;
-    weightCell.innerHTML = previousCounts[i].weight + " " + previousCounts[i].unit;
+    weightCell.innerHTML = previousCounts[i].weight;
 }
 
 function countRepetitions() {
-    var exerciseType = document.getElementById("exercise-type").value;
     var exerciseName = document.getElementById("exercise-name").value;
     var repetitions = document.getElementById("repetitions").value;
     var weight = document.getElementById("weight").value;
-    var unit = document.getElementById("unit").value;
+    console.log("Selected weight:", weight); // Add this line for debugging
     var result = document.getElementById("result");
 
     if (exerciseName == "" || repetitions == "") {
@@ -80,26 +80,28 @@ function countRepetitions() {
     } else {
         // Add the new count to the table
         var row = countTable.insertRow(1);
-        var exerciseTypeCell = row.insertCell(0);
-        var exerciseNameCell = row.insertCell(1);
-        var repetitionsCell = row.insertCell(2);
-        var weightCell = row.insertCell(3);
-        exerciseTypeCell.innerHTML = exerciseType;
+        var exerciseNameCell = row.insertCell(0);
+        var repetitionsCell = row.insertCell(1);
+        var weightCell = row.insertCell(2);
+
+        // Insert the data into the cells
         exerciseNameCell.innerHTML = exerciseName;
         repetitionsCell.innerHTML = repetitions;
-        weightCell.innerHTML = weight + " " + unit;
+        weightCell.innerHTML = weight;
 
-        previousCounts.push({ exerciseType: exerciseType, exerciseName: exerciseName, repetitions: repetitions, weight: weight, unit: unit });
+        previousCounts.push({ exerciseName: exerciseName, repetitions: repetitions, weight: weight });
 
         localStorage.setItem("previousCounts", JSON.stringify(previousCounts));
 
-        result.innerHTML = "You did " + repetitions + " repetitions of " + exerciseName + " with " + weight + " " + unit + ".";
+        result.innerHTML = "Du gjorde " + repetitions + " repetisjoner av " + exerciseName + " med " + weight + " ";
         result.style.backgroundColor = "#D4EADD";
         result.style.padding = "20px";
         result.style.borderRadius = "5px";
         result.style.color = "#64A47C";
     }
 }
+
+
 
 function setRepetitions(value) {
     document.getElementById("repetitions").value = value;
@@ -171,3 +173,4 @@ inputFields.forEach(field => {
         }
     });
 });
+

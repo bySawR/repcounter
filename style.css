@@ -16,9 +16,9 @@
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 28px;
     margin-top: 36px;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
 }
 
     /* Add this style to hide the actual radio buttons */
@@ -35,6 +35,7 @@ body {
   height: 100%;
   margin: 0; /* Remove default margin to ensure full height */
   padding: 32px;
+  margin-bottom: 100px;
 }
 
 label {
@@ -111,3 +112,85 @@ button {
 .cta-button {
     width: 30%;
 }
+
+th {
+    width: 300px;
+    text-align: left;
+    font-size: 18px;
+}
+
+td {
+    font-size: 18px;
+}
+
+span {
+    font-size: 20px;
+}
+
+/* Style the label of the checked radio button */
+input[type="radio"]:checked + label {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+/* Style the .radio-wrapper when the radio button is checked */
+input[type="radio"]:checked > .radio-wrapper {
+    background-color: var(--yellow) !important;
+}
+
+.add-button-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+        .bottom-navbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: space-evenly;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 20px 20px;
+        }
+
+        /* Style for the bottom navigation bar links */
+        .bottom-navbar a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .header-wrapper {
+            display: flex;
+            flex: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 28px;
+        }
+
+        .cta-button {
+                display: flex;
+                width: 20%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--dark);
+    border: none;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid var(--dark);
+        height: 48px;
+        }
+
+        .nav-wrapper-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 75px;
+        }

@@ -13,6 +13,25 @@
 </head>
 
 <body>
+    <div class="bottom-navbar">
+        <div class="nav-wrapper-item"><a href="#hjem"><iconify-icon icon="solar:home-outline" width="28"></iconify-icon>
+                <div class="nav-text">HJEM</div>
+            </a>
+        </div>
+
+
+        <div class="nav-wrapper-item"><a href="#hjem"><iconify-icon icon="solar:archive-linear"
+                    width="28"></iconify-icon>
+                <div class="nav-text">LOGG</div>
+            </a>
+        </div>
+
+        <div class="nav-wrapper-item"><a href="#settings"><iconify-icon icon="solar:chart-2-linear"
+                    width="28"></iconify-icon>
+                <div class="nav-text">ANALYSE</div>
+            </a>
+        </div>
+    </div>
     <div class="rep-wrapper">
         <h1>Hva trener du?</h1>
         <form>
@@ -65,40 +84,42 @@
     <h1>Vekt</h1>
     <div class="input-group">
         <select id="weight" name="weight">
-            <option value="2.5">2.5 kg</option>
-            <option value="3.5">3.5 kg</option>
-            <option value="4.5">4.5 kg</option>
-            <option value="5.5">5.5 kg</option>
-            <option value="6.5">6.5 kg</option>
-            <option value="8">8 kg</option>
-            <option value="9">9 kg</option>
-            <option value="10">10 kg</option>
-            <option value="11.5">11.5 kg</option>
-            <option value="13.5">13.5 kg</option>
-            <option value="16">16 kg</option>
-            <option value="18">18 kg</option>
-            <option value="20.5">20.5 kg</option>
-            <option value="22.5">22.5 kg</option>
-            <option value="24">24 kg</option>
+            <option value="2.5kg">2.5kg</option>
+            <option value="3.5kg">3.5kg</option>
+            <option value="4.5kg">4.5kg</option>
+            <option value="5.5kg">5.5kg</option>
+            <option value="6.5kg">6.5kg</option>
+            <option value="8kg">8kg</option>
+            <option value="9kg">9kg</option>
+            <option value="10kg">10kg</option>
+            <option value="11.5kg">11.5kg</option>
+            <option value="13.5kg">13.5kg</option>
+            <option value="16kg">16kg</option>
+            <option value="18kg">18kg</option>
+            <option value="20.5kg">20.5kg</option>
+            <option value="22.5kg">22.5kg</option>
+            <option value="24kg">24kg</option>
         </select>
     </div>
-    <button type="button" onclick="countRepetitions()">Legg til</button>
+    <div class="add-button-wrapper">
+        <button type="button" onclick="countRepetitions()">Legg til</button>
+    </div>
 
     <p id="result"></p>
-
+    <div class="header-wrapper">
+        <h1>Treningsøkten</h1><button type="button" class="cta-button" onclick="clearCounts()">
+            Tøm</button>
+    </div>
     <table id="count-table">
         <tr>
             <th>Øvelse</th>
-            <th>Repetisjoner</th>
+            <th>Reps</th>
             <th>Vekt</th>
         </tr>
     </table>
-    <button type="button" class="cta-button" onclick="clearCounts()">
-        Clear</button>
-    <button type="button" class="cta-button"
-        onclick="saveCounts(); alert('Your repetitions have been saved')">Save</button>
+
     </form>
-    <script src="script.js"></script> <!-- Link to your external script.js file -->
+    <script src="script.js"></script>
 </body>
 
 </html>
