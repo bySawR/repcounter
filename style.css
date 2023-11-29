@@ -35,7 +35,7 @@ body {
   height: 100%;
   margin: 0; /* Remove default margin to ensure full height */
   padding: 32px;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 }
 
 label {
@@ -89,7 +89,7 @@ select, input {
     padding: 16px;
     border-radius: 8px;
     width: calc(50% - 38px);
-    min-height: 150px;
+    min-height: 100px;
     justify-content: center;
     background-color: white;
 }
@@ -174,7 +174,6 @@ input[type="radio"]:checked > .radio-wrapper {
 
         .cta-button {
                 display: flex;
-                width: 20%;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -194,3 +193,34 @@ input[type="radio"]:checked > .radio-wrapper {
             text-align: center;
             width: 75px;
         }
+
+        .button-wrapper-trening {
+            display: flex;
+            width: 100%;
+            align-items: flex-end;
+            gap: 10px;
+                justify-content: flex-end;
+        }
+
+    .category-wrapper {
+            display: flex;
+    padding: 24px;
+    gap: 16px;
+    background: white;
+    border: 8px;
+    align-items: center;
+    border-radius: 8px;
+    justify-content: space-between;
+    }
+
+    .category-wrapper-all {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+.category-content-wrapper {
+        display: flex;
+        align-items: center;
+                gap: 8px;
+    }
