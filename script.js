@@ -221,29 +221,6 @@ function saveWorkout() {
     alert('Workout saved successfully!');
 }
 
-function showPage(pageId) {
-    const pages = ['home', 'logg', 'analyse'];
-
-    // Hide all pages
-    pages.forEach(page => {
-        const pageElement = document.getElementById(page);
-        if (pageElement) {
-            pageElement.style.display = 'none';
-        }
-    });
-
-    // Show the selected page
-    const selectedPage = document.getElementById(pageId);
-    if (selectedPage) {
-        selectedPage.style.display = 'block';
-    }
-
-    // If the selected page is 'logg', load and display saved workouts
-    if (pageId === 'logg') {
-        loadAndDisplaySavedWorkouts();
-    }
-}
-
 function loadAndDisplaySavedWorkouts() {
     // Load and display saved workouts on the Logg page
     const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
@@ -268,9 +245,3 @@ function loadAndDisplaySavedWorkouts() {
         loggContainer.appendChild(exerciseTypeContainer);
     });
 }
-
-
-// Initial setup to show the home page by default
-document.addEventListener('DOMContentLoaded', function () {
-    showPage('home');
-});
