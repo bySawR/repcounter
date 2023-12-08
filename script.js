@@ -202,6 +202,7 @@ function saveWorkout() {
         exerciseName: document.getElementById('exercise-name').value,
         repetitions: document.getElementById('repetitions').value,
         weight: document.getElementById('weight').value,
+        date: new Date().toLocaleString(), // Add the current date
     };
 
     // Retrieve saved workouts from local storage
@@ -244,6 +245,7 @@ function loadAndDisplaySavedWorkouts() {
                 <p>Exercise: ${savedWorkout.exerciseName}</p>
                 <p>Repetitions: ${savedWorkout.repetitions}</p>
                 <p>Weight: ${savedWorkout.weight}</p>
+
                 <hr>
             `;
             exerciseTypeContainer.appendChild(workoutElement);
