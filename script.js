@@ -199,19 +199,26 @@ inputFields.forEach(field => {
 
 function saveWorkout() {
     const workout = {
-        exerciseType: document.querySelector('input[name="exercise-type"]:checked').value,
         exerciseName: document.getElementById('exercise-name').value,
         repetitions: document.getElementById('repetitions').value,
         weight: document.getElementById('weight').value,
     };
 
     // Retrieve saved workouts from local storage
-    const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
+    const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || {};
 
-    // Add the current workout to the array
-    savedWorkouts.push(workout);
+    // Get the current exercise type
+    const exerciseType = document.querySelector('input[name="exercise-type"]:checked').value;
 
-    // Save the updated array back to local storage
+    // If there are no saved workouts for this exercise type, create an empty array
+    if (!savedWorkouts[exerciseType]) {
+        savedWorkouts[exerciseType] = [];
+    }
+
+    // Add the current workout to the array for this exercise type
+    savedWorkouts[exerciseType].push(workout);
+
+    // Save the updated object back to local storage
     localStorage.setItem('savedWorkouts', JSON.stringify(savedWorkouts));
 
     // Optionally, you can clear the current session counts
@@ -223,15 +230,15 @@ function saveWorkout() {
 
 function loadAndDisplaySavedWorkouts() {
     // Load and display saved workouts on the Logg page
-    const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || [];
+    const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || {};
     const loggContainer = document.getElementById('saved-workouts');
     loggContainer.innerHTML = ''; // Clear previous content
 
-    savedWorkouts.forEach((workout, index) => {
+    Object.keys(savedWorkouts).forEach(exerciseType => {
         const exerciseTypeContainer = document.createElement('div');
-        exerciseTypeContainer.innerHTML = `<h2>${workout.exerciseType}</h2>`;
+        exerciseTypeContainer.innerHTML = `<h2>${exerciseType}</h2>`;
 
-        workout.data.forEach(savedWorkout => {
+        savedWorkouts[exerciseType].forEach(savedWorkout => {
             const workoutElement = document.createElement('div');
             workoutElement.innerHTML = `
                 <p>Exercise: ${savedWorkout.exerciseName}</p>
