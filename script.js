@@ -140,14 +140,22 @@ function setRepetitions(value) {
 }
 
 function clearCounts() {
-    // Clear the table
-    var countTable = document.getElementById("count-table");
-    for (var i = countTable.rows.length - 1; i > 0; i--) {
-        countTable.deleteRow(i);
-    }
+    // Show an alert to confirm the user's intention
+    const confirmation = confirm("Are you sure you want to clear the workout data? This action is irreversible.");
 
-    previousCounts = [];
-    localStorage.removeItem("previousCounts");
+    if (confirmation) {
+        // Clear the table
+        var countTable = document.getElementById("count-table");
+        for (var i = countTable.rows.length - 1; i > 0; i--) {
+            countTable.deleteRow(i);
+        }
+
+        previousCounts = [];
+        localStorage.removeItem("previousCounts");
+
+        // Optionally, you can also clear the current session counts
+        clearSessionCounts();
+    }
 }
 
 function saveCounts() {
@@ -190,7 +198,7 @@ window.onload = function () {
 
     document.getElementById("repetitions").value = "";
 
-        // Load and display saved workouts on the Logg page
+    // Load and display saved workouts on the Logg page
     const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || {};
 
     const loggContainer = document.getElementById('saved-workouts');

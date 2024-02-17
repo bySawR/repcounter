@@ -361,13 +361,18 @@ span {
     gap: 20px;
   }
 
-  .inner-85 {
-    width: 85%;
+  .inner-75 {
+    width: 75%;
   }
 
-  .inner-15 {
-    width: 15%;
+  .inner-25 {
+    width: 25%;
   }
+
+  .inner-37 {
+    width: 37.5%;
+  }
+
 
   img.logo {
     height: 36px;
