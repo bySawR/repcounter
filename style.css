@@ -1,24 +1,35 @@
 :root {
-    --dark: #18193F;
-    --blue: #9FA8DA;
-    --yellow: #FFE082;
-    --red: #FFAB91;
-    --primary-color: #272727;
-    --text: white;
-    --background: #F4F5FC;
-    --sidebar-gray-background: #DCE1EB;
-    --item-hover: #F0F0F0;
+    --blue: #0079FF;
+    --light-blue: #B2D7FF;
+    --bright-blue: #E5F2FF;
+    --green: #45E55F;
+    --light-green: #C7F7CF;
+    --bright-green: #ECFCEF;
+    --red: #FF2970;
+    --light-red: #FFBFD4;
+    --bright-red: #FFEAF1;
+    --yellow: #FFE927;
+    --light-yellow: #FFF8BE;
+    --bright-yellow: #FFFDE9;
+    --navy: #1C172C;
+    --grey: #BBB9C0;
+    --light-grey: #E8E8EA;
+    --dark-grey: #A4A2AB;
+    --success-green: #C0FFB0;
+    --success-navy-green: #29853D;
+    --brand-font: Poppins, sans-serif;
+    --background: #F7F7F7;
 }
 
 * {
     Font-family: Poppins, Sans serif;
-    color: var(--dark);
+    color: var(--navy);
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 24px;
     margin-top: 36px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 }
 
     /* Add this style to hide the actual radio buttons */
@@ -28,14 +39,17 @@ h1 {
         display: none;
     }
 
+    #home {
+        margin-left: 150px;
+        margin-right: 50px;
+    }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: var(--background);
   height: 100%;
   margin: 0; /* Remove default margin to ensure full height */
-  padding: 32px;
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 label {
@@ -45,11 +59,15 @@ label {
 
 select, input {
     font-size: 20px;
-    padding: 16px;
+    padding: 25px;
     display: flex;
     width: 100%;
     border-radius: 8px;
     border: 0px solid lightgray;
+}
+
+select:hover, input:hover {
+    outline: 2px solid var(--navy);
 }
 
 .rep-wrapper {
@@ -77,8 +95,18 @@ select, input {
     width: 48px;
     height: 48px;
     background-color: white;
-    color: var(--dark);
+    color: var(--navy);
         border-radius: 8px;
+}
+
+.preset-button:hover {
+    outline: 2px solid var(--dark-grey);
+    background: var(--bright-blue);
+}
+
+.preset-button:active {
+    background: var(--light-blue);
+    outline: 2px solid var(--navy);
 }
 
 .radio-wrapper label {
@@ -86,13 +114,20 @@ select, input {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
     min-height: 150px;
     justify-content: center;
     background-color: white;
 }
 
 .radio-wrapper label:hover {
+    outline: 2px solid var(--grey);
+}
+
+/* Style the label of the checked radio button */
+input[type="radio"]:checked + label {
+    color: var(--blue);
+    background-color: var(--bright-blue);
     outline: 2px solid black;
 }
 
@@ -109,7 +144,7 @@ button {
     text-align: center;
     justify-content: center;
     margin-top: 8px;
-    background-color: var(--dark);
+    background-color: var(--navy);
     color: white;
     border: none;
     font-size: 20px;
@@ -117,34 +152,31 @@ button {
 }
 
 .cta-button {
-    width: 30%;
+    width: 20%;
+}
+
+#count-table {
+    width: 100%;
 }
 
 th {
-    width: 300px;
+    width: calc(33% - 10px);
     text-align: left;
     font-size: 18px;
+    padding: 10px;
+    background: var(--light-blue);
 }
 
 td {
     font-size: 18px;
+    padding: 10px;
 }
 
 span {
     font-size: 20px;
 }
 
-/* Style the label of the checked radio button */
-input[type="radio"]:checked + label {
-    color: var(--blue);
-    font-weight: bold;
-    background-color: lightgrey;
-}
 
-/* Style the .radio-wrapper when the radio button is checked */
-input[type="radio"]:checked > .radio-wrapper {
-    background-color: var(--yellow) !important;
-}
 
 .add-button-wrapper {
     margin-top: 30px;
@@ -166,7 +198,7 @@ input[type="radio"]:checked > .radio-wrapper {
 
         /* Style for the bottom navigation bar links */
         .bottom-navbar a {
-            color: var(--dark);
+            color: var(--navy);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -186,12 +218,17 @@ input[type="radio"]:checked > .radio-wrapper {
     text-align: center;
     justify-content: center;
     background-color: transparent;
-    color: var(--dark);
+    color: var(--navy);
     border: none;
     font-size: 18px;
     border-radius: 8px;
-    border: 1px solid var(--dark);
+    border: 1px solid var(--navy);
         height: 48px;
+        }
+
+
+        .cta-button:hover {
+            background-color: var(--light-blue);
         }
 
         .nav-wrapper-item {
@@ -232,3 +269,106 @@ input[type="radio"]:checked > .radio-wrapper {
         align-items: center;
                 gap: 8px;
     }
+
+    body nav {
+        color: #fff;
+      position: fixed;
+      display: flex;
+      width: 75px;
+      align-items: center;
+      padding: 25px 15px;
+      background: white;
+      backdrop-filter: blur(35px);
+      flex-direction: column;
+      height: 100%;
+      height: -webkit-fill-available;
+      justify-content: space-between;
+      color: var(--navy);
+  
+  }
+  
+  .nav-front {
+  display: flex;
+  padding: var(--padding-grid);
+  justify-content: space-between;
+  }
+
+  .contact-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .contact-section a, iconify-icon {
+    display: flex;
+    color: inherit;
+    justify-content: center;
+    font-size: 15px;
+    height: 40px;
+    line-height: 0;
+    width: 40px;
+    padding: 10px 10px;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 20px;
+  }
+  
+  .contact-section a:hover {
+    background-color: var(--light-blue);
+    cursor: pointer;
+  }
+  
+  .sidenav-title {
+    opacity: 0.3;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    line-height: normal;
+    font-size: 16px;
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 6px;
+    left: 50px;
+    top: 0px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .wrapper {
+    display: flex;
+    gap: 20px;
+  }
+
+  .inner-85 {
+    width: 85%;
+  }
+
+  .inner-15 {
+    width: 15%;
+  }
+
+  img.logo {
+    height: 36px;
+  }
