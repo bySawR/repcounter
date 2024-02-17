@@ -155,13 +155,13 @@ function saveCounts() {
     const exerciseName = document.getElementById('exercise-name').value;
     const repetitions = document.getElementById('repetitions').value;
     const weight = document.getElementById('weight').value;
-    const unit = document.getElementById('unit').value;
+
 
     localStorage.setItem('exerciseType', exerciseType);
     localStorage.setItem('exerciseName', exerciseName);
     localStorage.setItem('repetitions', repetitions);
     localStorage.setItem('weight', weight);
-    localStorage.setItem('unit', unit);
+
 }
 
 window.onload = function () {
@@ -169,7 +169,7 @@ window.onload = function () {
     const exerciseName = localStorage.getItem('exerciseName');
     const repetitions = localStorage.getItem('repetitions');
     const weight = localStorage.getItem('weight');
-    const unit = localStorage.getItem('unit');
+
 
     if (exerciseType) {
         document.getElementById('exercise-type').value = exerciseType;
@@ -187,9 +187,6 @@ window.onload = function () {
         document.getElementById('weight').value = weight;
     }
 
-    if (unit) {
-        document.getElementById('unit').value = unit;
-    }
 
     document.getElementById("repetitions").value = "";
 
@@ -286,3 +283,4 @@ function loadAndDisplaySavedWorkouts() {
         loggContainer.appendChild(exerciseTypeContainer);
     });
 }
+
