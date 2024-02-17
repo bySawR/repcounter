@@ -52,6 +52,38 @@ updateExerciseNames();
 
 var countTable = document.getElementById("count-table");
 
+// Add event listener to each cell in the table for editing
+countTable.addEventListener("click", function (event) {
+    var target = event.target;
+
+    // Check if the clicked element is a cell within the table
+    if (target.tagName === "TD") {
+        // Create an input element for editing
+        var inputElement = document.createElement("input");
+        inputElement.type = "text";
+        inputElement.value = target.innerHTML;
+
+        // Replace the cell content with the input element
+        target.innerHTML = "";
+        target.appendChild(inputElement);
+
+        // Focus on the input element
+        inputElement.focus();
+
+        // Add blur event to handle saving the edited content
+        inputElement.addEventListener("blur", function () {
+            target.innerHTML = inputElement.value;
+        });
+
+        // Add keydown event to handle saving the edited content on Enter key
+        inputElement.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                target.innerHTML = inputElement.value;
+            }
+        });
+    }
+});
+
 for (var i = 0; i < previousCounts.length; i++) {
     var row = countTable.insertRow(1);
     var exerciseNameCell = row.insertCell(0);
