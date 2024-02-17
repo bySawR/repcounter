@@ -11,7 +11,7 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=block" rel="stylesheet">
 </head>
 
 <body>
@@ -24,28 +24,27 @@
 
                 <div class="select-wrapper">
                     <div class="radio-wrapper" onclick="selectExerciseType('Biceps')">
-                        <img class="logo" src="assets/ikon-biceps.png">
                         <input type="radio" id="biceps" name="exercise-type" value="Biceps"
                             onchange="updateExerciseNames()" checked>
-                        <label for="biceps">Biceps</label>
+                        <label for="biceps"><img class="logo" src="assets/ikon-biceps.png">Biceps</label>
                     </div>
                     <div class="radio-wrapper" onclick="selectExerciseType('MageSkuldre')">
-                        <img class="logo" src="assets/ikon-handvekt.png">
+            
                         <input type="radio" id="mageSkuldre" name="exercise-type" value="MageSkuldre"
                             onchange="updateExerciseNames()">
-                        <label for="mageSkuldre">Mage og skuldre</label>
+                        <label for="mageSkuldre"><img class="logo" src="assets/ikon-handvekt.png">Mage og skuldre</label>
                     </div>
                     <div class="radio-wrapper" onclick="selectExerciseType('BrystTriceps')">
-                        <img class="logo" src="assets/ikon-bryst.png">
+                        
                         <input type="radio" id="brystTriceps" name="exercise-type" value="BrystTriceps"
                             onchange="updateExerciseNames()">
-                        <label for="brystTriceps">Bryst og triceps</label>
+                        <label for="brystTriceps"><img class="logo" src="assets/ikon-bryst.png">Bryst og triceps</label>
                     </div>
                     <div class="radio-wrapper" onclick="selectExerciseType('SquatsRygg')">
-                        <img class="logo" src="assets/ikon-leg.png">
+                        
                         <input type="radio" id="squatsRygg" name="exercise-type" value="SquatsRygg"
                             onchange="updateExerciseNames()">
-                        <label for="squatsRygg">Squats og rygg</label>
+                        <label for="squatsRygg"><img class="logo" src="assets/ikon-leg.png">Squats og rygg</label>
                     </div>
                 </div>
         </div>
