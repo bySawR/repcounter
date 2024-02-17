@@ -157,6 +157,7 @@ button {
 
 #count-table {
     width: 100%;
+    border-spacing: 0;
 }
 
 th {
@@ -170,6 +171,8 @@ th {
 td {
     font-size: 18px;
     padding: 10px;
+    background-color: white;
+    border-bottom: 0.5px solid var(--grey);
 }
 
 span {
