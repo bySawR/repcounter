@@ -22,14 +22,17 @@
 }
 
 * {
-    Font-family: Poppins, Sans serif;
-    color: var(--navy);
+    Font-family: Inter, Sans serif;
+    color: black;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 1.7em;
+    letter-spacing: -0.3px;
+    line-height: 36px;
     margin-top: 36px;
-    margin-bottom: 10px;
+    font-weight: 800;
+    margin-bottom: 16px;
 }
 
     /* Add this style to hide the actual radio buttons */
@@ -40,16 +43,16 @@ h1 {
     }
 
     #home {
-        margin-left: 150px;
-        margin-right: 50px;
+
     }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--background);
+  background-color: white;
   height: 100%;
   margin: 0; /* Remove default margin to ensure full height */
   margin-bottom: 50px;
+  padding: 5vw 10vw;
 }
 
 label {
@@ -57,22 +60,38 @@ label {
     font-weight: 600;
 }
 
-select, input {
-    font-size: 20px;
-    padding: 25px;
-    display: flex;
+select, input, .preset-button {
+
+    padding: 24px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
     width: 100%;
-    border-radius: 8px;
-    border: 0px solid lightgray;
+    appearance: auto;
+    border-radius: 4px;
 }
+select:focus, input:focus{
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+    
 
 select:hover, input:hover {
-    outline: 2px solid var(--navy);
+    outline: 2px solid black;
 }
 
 .rep-wrapper {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid #e4e4e7;
+    padding-bottom: 48px;
 }
 
 .select-wrapper {
@@ -88,25 +107,27 @@ select:hover, input:hover {
     flex-direction: row;
     gap: 8px;
     align-items: center;
+    font-size: 16px;
 }
 
 .preset-button {
-    font-size: 20px;
-    width: 48px;
-    height: 48px;
+
+    width: 36px;
+    height: 36px;
     background-color: white;
-    color: var(--navy);
-        border-radius: 8px;
+    color: black;
+    border-radius: 8px;
 }
 
 .preset-button:hover {
-    outline: 2px solid var(--dark-grey);
-    background: var(--bright-blue);
+    border: 1px solid black;
+    background: #e4e4e7;
 }
 
 .preset-button:active {
-    background: var(--light-blue);
-    outline: 2px solid var(--navy);
+    background: black;
+    border: 1px solid black;
+    color: white;
 }
 
 .radio-wrapper label {
@@ -114,21 +135,29 @@ select:hover, input:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    border-radius: 10px;
-    min-height: 150px;
+    border-radius: 8px;
+    height: 150px;
+    flex: 25%;
+    gap: 12px;
     justify-content: center;
     background-color: white;
+    border: 1px solid #e4e4e7;
 }
 
 .radio-wrapper label:hover {
-    outline: 2px solid var(--grey);
+    border: 1px solid black;
+    background-color: #e4e4e7;  
 }
 
 /* Style the label of the checked radio button */
 input[type="radio"]:checked + label {
-    color: var(--blue);
-    background-color: var(--bright-blue);
-    outline: 2px solid black;
+    color: #f4f4f5;
+    background-color: black;
+    border: 1px solid black;
+}
+
+input[type="radio"]:checked + label img.logo {
+    filter: invert(1);
 }
 
 .radio-wrapper {
@@ -139,17 +168,34 @@ input[type="radio"]:checked + label {
 button {
     display: flex;
     width: 100%;
-    padding: 16px;
+    padding: 24px;
     align-items: center;
     text-align: center;
     justify-content: center;
     margin-top: 8px;
-    background-color: var(--navy);
+    background-color: black;
     color: white;
     border: none;
     font-size: 20px;
     border-radius: 8px;
+    cursor: pointer;
 }
+
+button:hover {
+    background-color: #333; /* Slightly lighter black on hover */
+}
+
+button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3); /* White focus ring */
+}
+
+button:active {
+    background-color: #555; /* Even lighter black when pressed */
+}
+
+
+
 
 .cta-button {
     width: 20%;
@@ -164,19 +210,21 @@ th {
     width: calc(33% - 10px);
     text-align: left;
     font-size: 18px;
-    padding: 10px;
-    background: var(--light-blue);
+    padding: 16px;
+    background: #ced4da;
 }
 
 td {
     font-size: 18px;
-    padding: 10px;
+    padding: 16px;
     background-color: white;
-    border-bottom: 0.5px solid var(--grey);
+    border-bottom: 0.5px solid #e4e4e7;
 }
 
 span {
-    font-size: 20px;
+    font-size: 16px;
+    padding-top: 8px;
+    margin-right: 8px;
 }
 
 
@@ -201,7 +249,7 @@ span {
 
         /* Style for the bottom navigation bar links */
         .bottom-navbar a {
-            color: var(--navy);
+            color: black;
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -209,10 +257,11 @@ span {
 
         .header-wrapper {
             display: flex;
-            flex: row;
+            border-top: 1px solid #e4e4e7;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 28px;
+            padding-top: 48px;
+            padding-bottom: 16px;
         }
 
         .cta-button {
@@ -221,17 +270,20 @@ span {
     text-align: center;
     justify-content: center;
     background-color: transparent;
-    color: var(--navy);
+    color: black;
     border: none;
     font-size: 18px;
     border-radius: 8px;
-    border: 1px solid var(--navy);
+    border: 1px solid black;
         height: 48px;
         }
 
+    
+
 
         .cta-button:hover {
-            background-color: var(--light-blue);
+            background: black;
+            color: white;
         }
 
         .nav-wrapper-item {
@@ -286,7 +338,7 @@ span {
       height: 100%;
       height: -webkit-fill-available;
       justify-content: space-between;
-      color: var(--navy);
+      color: black;
   
   }
   
@@ -316,7 +368,6 @@ span {
     flex-direction: row;
     align-items: center;
     text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
     border-radius: 20px;
   }
   
@@ -379,4 +430,12 @@ span {
 
   img.logo {
     height: 36px;
+  }
+
+  .wrapper-inner {
+    width: 100%;
+  }
+
+
+  .input-wrapper {
   }

@@ -11,151 +11,119 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=block" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=block"
+        rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="header-logo">
-                <img class="logo" src="../assets/logo-dark.svg">
-            </div>
-            <div class="contact-section">
-                <div class="sidenav-title">MUSKLER</div>
-    
-                <a href="biceps.html" class="contact-link">
-                    <div class="tooltip"><img class="logo" src="assets/ikon-biceps.png">
-                        <span class="tooltiptext">Biceps</span>
-                    </div>
-                </a>
-                <a href="mageskuldre.html" class="contact-link">
-                    <div class="tooltip"><img class="logo" src="assets/ikon-handvekt.png">
-                        <span class="tooltiptext">Mage og skuldre</span>
-                    </div>
-                </a>
-                <a href="brysttriceps.html" class="contact-link">
-                    <div class="tooltip"><img class="logo" src="assets/ikon-bryst.png">
-                        <span class="tooltiptext">Bryst og triceps</span>
-                    </div>
-                </a>
-                <a href="squatsrygg.html" class="contact-link">
-                    <div class="tooltip"><img class="logo" src="assets/ikon-leg.png">
-                        <span class="tooltiptext">Squats og rygg</span>
-                    </div>
-                </a>
-                
-            </div>
-            <div class="contact-section">
-            <div class="sidenav-title">ARKIV</div>
-                <a href="biceps.html" class="contact-link">
-                    <div class="tooltip"><img class="logo" src="assets/ikon-biceps.png">
-                        <span class="tooltiptext">Stats</span>
-                    </div>
-                </a>
-            </div>  
-            <div class="sidenav-title">V2.0</div>
-        </nav>
-    </header>
-    
+
     </div>
 
     <div id="home">
         <div class="rep-wrapper">
-            <h1>Hva trener du?</h1>
+            <h1>Velg muskelgruppe</h1>
             <form>
 
                 <div class="select-wrapper">
                     <div class="radio-wrapper" onclick="selectExerciseType('Biceps')">
                         <input type="radio" id="biceps" name="exercise-type" value="Biceps"
                             onchange="updateExerciseNames()" checked>
-                        <label for="biceps"><img class="logo" src="assets/ikon-biceps.png">Biceps</label>
+                        <label for="biceps"><img class="logo" src="assets/Biceps.svg">Biceps</label>
                     </div>
                     <div class="radio-wrapper" onclick="selectExerciseType('MageSkuldre')">
-            
+
                         <input type="radio" id="mageSkuldre" name="exercise-type" value="MageSkuldre"
                             onchange="updateExerciseNames()">
-                        <label for="mageSkuldre"><img class="logo" src="assets/ikon-handvekt.png">Mage og skuldre</label>
+                        <label for="mageSkuldre"><img class="logo" src="assets/Abs.svg">Mage og skuldre</label>
                     </div>
                     <div class="radio-wrapper" onclick="selectExerciseType('BrystTriceps')">
-                        
+
                         <input type="radio" id="brystTriceps" name="exercise-type" value="BrystTriceps"
                             onchange="updateExerciseNames()">
-                        <label for="brystTriceps"><img class="logo" src="assets/ikon-bryst.png">Bryst og triceps</label>
+                        <label for="brystTriceps"><img class="logo" src="assets/Bench.svg">Bryst og triceps</label>
                     </div>
                     <div class="radio-wrapper" onclick="selectExerciseType('SquatsRygg')">
-                        
+
                         <input type="radio" id="squatsRygg" name="exercise-type" value="SquatsRygg"
                             onchange="updateExerciseNames()">
-                        <label for="squatsRygg"><img class="logo" src="assets/ikon-leg.png">Squats og rygg</label>
+                        <label for="squatsRygg"><img class="logo" src="assets/Squat.svg">Squats og rygg</label>
                     </div>
                 </div>
         </div>
-        <h1>Øvelse</h1>
+        <div class="input-wrapper">
+        <h1>Legg til øvelser</h1>
         <div class="select-wrapper">
             <select id="exercise-name" name="exercise-name">
             </select>
         </div>
         <div class="wrapper">
-            <div class="wrapper-inner inner-75">
-        <h1>Repetisjoner</h1>
-        <div class="select-wrapper">
-            <input type="number" id="repetitions" name="repetitions" placeholder="10">
-            <div class="preset-wrapper">
-                <span>Foreslått</span>
-                <button type="button" class="preset-button" onclick="setRepetitions(6)">6</button>
-                <button type="button" class="preset-button" onclick="setRepetitions(8)">8</button>
-                <button type="button" class="preset-button" onclick="setRepetitions(10)">10</button>
-                <button type="button" class="preset-button" onclick="setRepetitions(12)">12</button>
-                <button type="button" class="preset-button" onclick="setRepetitions(15)">15</button>
+            <div class="wrapper-inner">
+                <h1>Repetisjoner</h1>
+                <div class="select-wrapper">
+                    <input type="number" id="repetitions" name="repetitions" placeholder="10">
+                    <div class="preset-wrapper">
+                        <span>Foreslått</span>
+                        <button type="button" class="preset-button" onclick="setRepetitions(6)">6</button>
+                        <button type="button" class="preset-button" onclick="setRepetitions(8)">8</button>
+                        <button type="button" class="preset-button" onclick="setRepetitions(10)">10</button>
+                        <button type="button" class="preset-button" onclick="setRepetitions(12)">12</button>
+                        <button type="button" class="preset-button" onclick="setRepetitions(15)">15</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="wrapper-inner inner-25">
-        <h1>Vekt</h1>
-        <div class="input-group">
-            <select id="weight" name="weight">
-                <option value="2.5kg">2.5kg</option>
-                <option value="3.5kg">3.5kg</option>
-                <option value="4.5kg">4.5kg</option>
-                <option value="5.5kg">5.5kg</option>
-                <option value="6.5kg">6.5kg</option>
-                <option value="8kg">8kg</option>
-                <option value="9kg">9kg</option>
-                <option value="10kg">10kg</option>
-                <option value="11.5kg">11.5kg</option>
-                <option value="13.5kg">13.5kg</option>
-                <option value="16kg">16kg</option>
-                <option value="18kg">18kg</option>
-                <option value="20.5kg">20.5kg</option>
-                <option value="22.5kg">22.5kg</option>
-                <option value="24kg">24kg</option>
-                <option value="30kg">30kg</option>
-                <option value="40kg">40kg</option>
-                <option value="NaN">NaN</option>
-            </select>
-        </div>
-    </div>
-    </div>
-        <div class="add-button-wrapper">
-            <button type="button" onclick="countRepetitions()">Legg til</button>
+        <div class="wrapper-inner">
+            <h1>Vekt</h1>
+            <div class="input-group">
+                <select id="weight" name="weight">
+                    <option value="2.5kg">2.5kg</option>
+                    <option value="3.5kg">3.5kg</option>
+                    <option value="4.5kg">4.5kg</option>
+                    <option value="5.5kg">5.5kg</option>
+                    <option value="6.5kg">6.5kg</option>
+                    <option value="8kg">8kg</option>
+                    <option value="9kg">9kg</option>
+                    <option value="10kg">10kg</option>
+                    <option value="11.5kg">11.5kg</option>
+                    <option value="13.5kg">13.5kg</option>
+                    <option value="16kg">16kg</option>
+                    <option value="18kg">18kg</option>
+                    <option value="20.5kg">20.5kg</option>
+                    <option value="22.5kg">22.5kg</option>
+                    <option value="24kg">24kg</option>
+                    <option value="30kg">30kg</option>
+                    <option value="40kg">40kg</option>
+                    <option value="NaN">NaN</option>
+                </select>
+            </div>
         </div>
 
-        <p id="result"></p>
-        <div class="header-wrapper">
-            <h1>Treningsøkten</h1>
-            <div class="button-wrapper-trening"><button type="button" class="cta-button" onclick="clearCounts()">
-                    Tøm</button></div>
-            <!-- Add this line -->
+    <div class="add-button-wrapper">
+        <button type="button" onclick="countRepetitions()">Legg til</button>
 
-        </div>
-        <table id="count-table">
-            <tr>
-                <th>Øvelse</th>
-                <th>Repetisjoner</th>
-                <th>Vekt</th>
-            </tr>
-        </table>
-        </form>
+    </div>
+
+    <p id="result"></p>
+    <div class="header-wrapper">
+        <h1>Treningsøkten</h1>
+        <div class="button-wrapper-trening"><button type="button" class="cta-button" onclick="clearCounts()">
+                Tøm</button></div>
+        <!-- Add this line -->
+    </div>
+</div>
+
+    </div>
+    <table id="count-table">
+        <tr>
+            <th>Øvelse</th>
+            <th>Repetisjoner</th>
+            <th>Vekt</th>
+        </tr>
+    </table>
+    </form>
     </div>
     <script src="script.js"></script>
     <script src="pageFunctions.js"></script>
