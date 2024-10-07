@@ -1,3 +1,4 @@
+// Load previously saved workouts from localStorage
 var previousCounts = JSON.parse(localStorage.getItem("previousCounts")) || [];
 
 // Function to handle the click on the wrapper divs and simulate radio button click
@@ -12,11 +13,12 @@ function selectExerciseType(value) {
 // Define an object with predefined exercise names for each exercise type
 const predefinedExercises = {
     Biceps: ["Bicep Curls", "Seated Curls", "Hammer Curls", "Barbell Curls"],
-    MageSkuldre: ["Beinløft", "Sakseløft", "Situps", "Ab crunches", "Rulle", "Seated Arnold Press", "Dumbell Shoulder Raises", "Barbell Press", "Backwards Barebell Press", "High Pull", "Lateral Raise", "Dumbell Press", "Overhead Press"],
-    SquatsRygg: ["Squats", "Dumbell Squats", "Barbell Squats", "Calf Raises", "Barbell Back Row", "Dumbell Reverse Fly", "Barbell Shrug", "Dumbell Shrug"],
-    BrystTriceps: ["Pushups", "Dumbell Press", "Dumbell Butterflies", "Upperhead Fly", "Dumbell Bench", "Tricep Kickback", "Tricep Overhead Extension", "Tricep Flex"]
+    MageSkuldre: ["Situps", "Seated Arnold Press", "Dumbell Shoulder Raises", "Ab Crunches"],
+    SquatsRygg: ["Squats", "Dumbell Squats", "Barbell Back Row", "Calf Raises"],
+    BrystTriceps: ["Pushups", "Dumbell Press", "Tricep Kickback", "Dumbell Butterflies"]
 };
 
+// Updates the exercise dropdown when switching between muscle groups
 function updateExerciseNames() {
     const exerciseTypeRadios = document.getElementsByName("exercise-type");
     let selectedExerciseType;
@@ -84,6 +86,7 @@ countTable.addEventListener("click", function (event) {
     }
 });
 
+// Restore previously saved workouts
 for (var i = 0; i < previousCounts.length; i++) {
     var row = countTable.insertRow(1);
     var exerciseNameCell = row.insertCell(0);
@@ -96,14 +99,14 @@ for (var i = 0; i < previousCounts.length; i++) {
     weightCell.innerHTML = previousCounts[i].weight;
 }
 
+// Handles adding workout data to the table
 function countRepetitions() {
     var exerciseName = document.getElementById("exercise-name").value;
     var repetitions = document.getElementById("repetitions").value;
     var weight = document.getElementById("weight").value;
-    console.log("Selected weight:", weight); // Add this line for debugging
     var result = document.getElementById("result");
 
-    if (exerciseName == "" || repetitions == "") {
+    if (exerciseName === "" || repetitions === "") {
         result.innerHTML = "Please enter both an exercise name and the number of repetitions.";
         result.style.backgroundColor = "#FFC1CE";
         result.style.padding = "20px";
@@ -133,18 +136,15 @@ function countRepetitions() {
     }
 }
 
-
-
+// Pre-populate the repetitions input
 function setRepetitions(value) {
     document.getElementById("repetitions").value = value;
 }
 
+// Clears the saved workout data
 function clearCounts() {
-    // Show an alert to confirm the user's intention
     const confirmation = confirm("Are you sure you want to clear the workout data? This action is irreversible.");
-
     if (confirmation) {
-        // Clear the table
         var countTable = document.getElementById("count-table");
         for (var i = countTable.rows.length - 1; i > 0; i--) {
             countTable.deleteRow(i);
@@ -152,62 +152,40 @@ function clearCounts() {
 
         previousCounts = [];
         localStorage.removeItem("previousCounts");
-
-        // Optionally, you can also clear the current session counts
-        clearSessionCounts();
     }
 }
 
-function saveCounts() {
-    const exerciseType = document.getElementById('exercise-type').value;
-    const exerciseName = document.getElementById('exercise-name').value;
-    const repetitions = document.getElementById('repetitions').value;
-    const weight = document.getElementById('weight').value;
+// Save workout based on the muscle group
+function saveWorkout(muscleGroup) {
+    const workout = {
+        exerciseName: document.getElementById('exercise-name').value,
+        repetitions: document.getElementById('repetitions').value,
+        weight: document.getElementById('weight').value,
+        date: new Date().toLocaleString(),
+    };
 
-
-    localStorage.setItem('exerciseType', exerciseType);
-    localStorage.setItem('exerciseName', exerciseName);
-    localStorage.setItem('repetitions', repetitions);
-    localStorage.setItem('weight', weight);
-
-}
-
-window.onload = function () {
-    const exerciseType = localStorage.getItem('exerciseType');
-    const exerciseName = localStorage.getItem('exerciseName');
-    const repetitions = localStorage.getItem('repetitions');
-    const weight = localStorage.getItem('weight');
-
-
-    if (exerciseType) {
-        document.getElementById('exercise-type').value = exerciseType;
-    }
-
-    if (exerciseName) {
-        document.getElementById('exercise-name').value = exerciseName;
-    }
-
-    if (repetitions) {
-        document.getElementById('repetitions').value = repetitions;
-    }
-
-    if (weight) {
-        document.getElementById('weight').value = weight;
-    }
-
-
-    document.getElementById("repetitions").value = "";
-
-    // Load and display saved workouts on the Logg page
     const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || {};
+    if (!savedWorkouts[muscleGroup]) {
+        savedWorkouts[muscleGroup] = [];
+    }
 
+    savedWorkouts[muscleGroup].push(workout);
+    localStorage.setItem('savedWorkouts', JSON.stringify(savedWorkouts));
+
+    alert('Workout saved successfully!');
+}
+
+// Display saved workouts
+function loadAndDisplaySavedWorkouts() {
+    const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || {};
     const loggContainer = document.getElementById('saved-workouts');
+    loggContainer.innerHTML = ''; // Clear previous content
 
-    Object.keys(savedWorkouts).forEach(exerciseType => {
+    Object.keys(savedWorkouts).forEach(muscleGroup => {
         const exerciseTypeContainer = document.createElement('div');
-        exerciseTypeContainer.innerHTML = `<h2>${exerciseType}</h2>`;
+        exerciseTypeContainer.innerHTML = `<h2>${muscleGroup}</h2>`;
 
-        savedWorkouts[exerciseType].forEach(workout => {
+        savedWorkouts[muscleGroup].forEach(workout => {
             const workoutElement = document.createElement('div');
             workoutElement.innerHTML = `
                 <p>Exercise: ${workout.exerciseName}</p>
@@ -220,75 +198,17 @@ window.onload = function () {
 
         loggContainer.appendChild(exerciseTypeContainer);
     });
-};
+}
 
+// Handle the 'Enter' key to trigger the add button
 const inputFields = document.querySelectorAll('input, select');
 const addButton = document.querySelector('button');
 
 inputFields.forEach(field => {
     field.addEventListener('keydown', function (event) {
         if (event.key === "Enter") {
-            addButton.click(); // Simulate click on the add button
-            event.preventDefault(); // Prevent the form from submitting
+            addButton.click();
+            event.preventDefault();
         }
     });
 });
-
-function saveWorkout() {
-    const workout = {
-        exerciseName: document.getElementById('exercise-name').value,
-        repetitions: document.getElementById('repetitions').value,
-        weight: document.getElementById('weight').value,
-        date: new Date().toLocaleString(), // Add the current date
-    };
-
-    // Retrieve saved workouts from local storage
-    const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || {};
-
-    // Get the current exercise type
-    const exerciseType = document.querySelector('input[name="exercise-type"]:checked').value;
-
-    // If there are no saved workouts for this exercise type, create an empty array
-    if (!savedWorkouts[exerciseType]) {
-        savedWorkouts[exerciseType] = [];
-    }
-
-    // Add the current workout to the array for this exercise type
-    savedWorkouts[exerciseType].push(workout);
-
-    // Save the updated object back to local storage
-    localStorage.setItem('savedWorkouts', JSON.stringify(savedWorkouts));
-
-    // Optionally, you can clear the current session counts
-    clearCounts();
-
-    // Alert the user that the workout has been saved (you can customize this part)
-    alert('Workout saved successfully!');
-}
-
-function loadAndDisplaySavedWorkouts() {
-    // Load and display saved workouts on the Logg page
-    const savedWorkouts = JSON.parse(localStorage.getItem('savedWorkouts')) || {};
-    const loggContainer = document.getElementById('saved-workouts');
-    loggContainer.innerHTML = ''; // Clear previous content
-
-    Object.keys(savedWorkouts).forEach(exerciseType => {
-        const exerciseTypeContainer = document.createElement('div');
-        exerciseTypeContainer.innerHTML = `<h2>${exerciseType}</h2>`;
-
-        savedWorkouts[exerciseType].forEach(savedWorkout => {
-            const workoutElement = document.createElement('div');
-            workoutElement.innerHTML = `
-                <p>Exercise: ${savedWorkout.exerciseName}</p>
-                <p>Repetitions: ${savedWorkout.repetitions}</p>
-                <p>Weight: ${savedWorkout.weight}</p>
-
-                <hr>
-            `;
-            exerciseTypeContainer.appendChild(workoutElement);
-        });
-
-        loggContainer.appendChild(exerciseTypeContainer);
-    });
-}
-

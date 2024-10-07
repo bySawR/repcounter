@@ -43,20 +43,20 @@ h1 {
     }
 
     #home {
-
+margin-left: 48px;
     }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: white;
   height: 100%;
-  margin: 0; /* Remove default margin to ensure full height */
+  margin-left: 225px;
+  margin-right: 50px;
   margin-bottom: 50px;
-  padding: 5vw 10vw;
 }
 
 label {
-    font-size: 20px;
+    font-size: 1em;
     font-weight: 600;
 }
 
@@ -70,7 +70,6 @@ select, input, .preset-button {
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
-    width: 100%;
     appearance: auto;
     border-radius: 4px;
 }
@@ -81,6 +80,10 @@ select:focus, input:focus{
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }
+
+select {
+    width: 100%;
+}
     
 
 select:hover, input:hover {
@@ -89,14 +92,21 @@ select:hover, input:hover {
 
 .rep-wrapper {
     display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
     flex-direction: column;
-    border-bottom: 1px solid #e4e4e7;
+    border-right: 1px solid #e4e4e7;
     padding-bottom: 48px;
+    height: 100vh;
+    background-color: white;
+    padding: 16px;
+    width: 200px;
 }
 
 .select-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 8px;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -132,16 +142,17 @@ select:hover, input:hover {
 
 .radio-wrapper label {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    text-align: center;
-    border-radius: 8px;
-    height: 150px;
+    padding: 12px;
+    text-align: left;
+    border-radius: 4px;
+    height: 28px;
     flex: 25%;
-    gap: 12px;
-    justify-content: center;
+    gap: 8px;
+    justify-content: flex-start;
     background-color: white;
-    border: 1px solid #e4e4e7;
+    border: 1px solid transparent;
 }
 
 .radio-wrapper label:hover {
@@ -161,7 +172,7 @@ input[type="radio"]:checked + label img.logo {
 }
 
 .radio-wrapper {
-    width: calc(25% - 15px);
+    width: 100%;
 }
 
 
@@ -260,7 +271,7 @@ span {
             border-top: 1px solid #e4e4e7;
             justify-content: space-between;
             align-items: center;
-            padding-top: 48px;
+            padding-top: 36px;
             padding-bottom: 16px;
         }
 
@@ -325,11 +336,12 @@ span {
                 gap: 8px;
     }
 
-    body nav {
+    nav {
         color: #fff;
       position: fixed;
       display: flex;
-      width: 75px;
+      left: 0;
+      width: 100px;
       align-items: center;
       padding: 25px 15px;
       background: white;
@@ -438,4 +450,8 @@ span {
 
 
   .input-wrapper {
+  }
+
+  .rep-wrapper h1 {
+    margin-top: 0;
   }
